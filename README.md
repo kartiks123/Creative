@@ -1,4 +1,4 @@
-![Screenshot 2024-03-19 180000](https://github.com/kartiks123/Creative/assets/78920624/dbaf0e90-1878-40e4-868f-73c77ff393fe)This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
 My Screenshots :
 
