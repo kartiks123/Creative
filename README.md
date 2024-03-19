@@ -1,4 +1,11 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+![Screenshot 2024-03-19 180000](https://github.com/kartiks123/Creative/assets/78920624/dbaf0e90-1878-40e4-868f-73c77ff393fe)This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+
+My Screenshots :
+
+![Screenshot 2024-03-19 180000](https://github.com/kartiks123/Creative/assets/78920624/216a49ad-bbac-4862-9ec5-7daeea2b8b80)
+
+![Screenshot 2024-03-19 180038](https://github.com/kartiks123/Creative/assets/78920624/b3c3a972-a41d-4615-95fc-81cfc0643d45)
+
 
 # Getting Started
 
