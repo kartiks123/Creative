@@ -1,117 +1,120 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import React, { useState } from 'react';
+import { Text, TextInput, View, StyleSheet, Button, TouchableOpacity, KeyboardAvoidingView } from 'react-native';
 
-import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+const App = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [display, setDisplay] = useState(false);
+  const [hidePassword, setHidePassword] = useState(true);
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+  const resetFormData = () => {
+    setDisplay(false);
+    setEmail("");
+    setName("");
+    setPassword("");
+  };
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
-
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+  const toggleHidePassword = () => {
+    setHidePassword(!hidePassword);
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
+    <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding">
+      <View style={styles.container}>
+        <Text style={{ fontSize: 50 }}>Form 2.0</Text>
+        <Text style={{ fontSize: 22 }}>Your Username : {name}</Text>
+
+        <TextInput
+          style={styles.textInput}
+          placeholder="Enter Username here"
+          onChangeText={(text) => setName(text)}
+          value={name}
+        />
+
+        <View style={styles.passwordContainer}>
+          <TextInput
+            style={styles.passwordInput}
+            placeholder="Enter Password here"
+            secureTextEntry={hidePassword}
+            onChangeText={(text) => setPassword(text)}
+            value={password}
+          />
+          <TouchableOpacity style={styles.eyeButton} onPress={toggleHidePassword}>
+            <Text>{hidePassword ? 'Show' : 'Hide'}</Text>
+          </TouchableOpacity>
         </View>
-      </ScrollView>
-    </SafeAreaView>
+
+        <TextInput
+          style={styles.textInput}
+          placeholder="Enter Email here"
+          onChangeText={(text) => setEmail(text)}
+          value={email}
+        />
+        <View style={styles.buttonContainer}>
+          <Button color={"green"} title='Print Details' onPress={()=>setDisplay(true)} style={styles.button}/>
+        </View>
+        <View style={styles.buttonContainer}>
+          <Button title='Clear Details' onPress={resetFormData} style={styles.button}/>
+        </View>
+        <View>
+          {
+            display ?
+              <View>
+                <Text style={{fontSize:20}}>User Name is : {name}</Text>
+                <Text style={{fontSize:20}}>User Password is : {password}</Text>
+                <Text style={{fontSize:20}}>User Email is : {email}</Text>
+              </View> 
+              : null
+          }
+        </View>
+      </View>
+    </KeyboardAvoidingView>
   );
-}
+};
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
+  textInput: {
+    fontSize: 20,
+    color: 'grey',
+    height: 50,
+    borderColor: 'blue',
+    borderWidth: 2,
+    margin: 22,
+    padding: 10,
+    width: '70%',
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
+  passwordContainer: {
+    position: 'relative',
   },
-  highlight: {
-    fontWeight: '700',
+  passwordInput: {
+    fontSize: 20,
+    color: 'grey',
+    height: 50,
+    borderColor: 'blue',
+    borderWidth: 2,
+    margin: 22,
+    padding: 10,
+    paddingRight: 70,
+  },
+  eyeButton: {
+    position: 'absolute',
+    right: 35,
+    top: 35, 
+  },
+  buttonContainer: {
+    marginVertical: 10,
+    width: '40%',
+  },
+  button: {
+    height: 50,
+    width: '100%',
+    fontSize: 20,
   },
 });
 
